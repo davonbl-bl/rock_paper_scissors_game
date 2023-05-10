@@ -1,6 +1,21 @@
 //emotionally stable, aggreeable, extrovert (being speakable)
 
 const numOfGames = document.querySelector('#clickGamesBtn');
+const pressForGames = document.querySelector('#decideGames')
+pressForGames.addEventListener('keydown', (e)=> {
+    console.log('keydown')
+    const getNumber = pressForGames.value;
+    if(e.key === "Enter"){
+        if(!isNaN(getNumber)){
+            console.log(getNumber)
+            console.log('hello world')
+        }else{
+            console.log('not a number')
+        }
+        
+    } 
+    // if(pressForGames.keydown === '')
+})
 numOfGames.addEventListener('click', (event)=> {
     const chooseNum = document.querySelector('#decideGames');
     const getValue = chooseNum.value;
@@ -8,15 +23,19 @@ numOfGames.addEventListener('click', (event)=> {
     const displayNumber = document.querySelector('#numOfGames');
     displayNumber.innerText = getValue; 
     console.log(event)
-    if(event.isTrusted === true && getValue !== ''){
-        console.log('testing')
-    } else{
-        //best to create
-        console.log('other testing')
-    }
+    // if(event.isTrusted === true && getValue !== ''){
+    //     console.log('testing')
+    //     numOfGames.disabled = true;
+    // } else{
+    //     //best to create
+    //     console.log('other testing')
+    // }
+
+
+
     // if(numOfGames.disabled === false){
     //     console.log('hello')
-    //     numOfGames.disabled = true; 
+    //      
     // } else {
     //     console.log('it is not working')
     // }
@@ -24,6 +43,8 @@ numOfGames.addEventListener('click', (event)=> {
 
     //studying human psychology and the dynamatic 
 })
+
+// numOfGames.addEventListener('pressdown')
 
 // const numOfGames = () => {
 
