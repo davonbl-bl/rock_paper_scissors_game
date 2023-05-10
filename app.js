@@ -1,35 +1,51 @@
 //emotionally stable, aggreeable, extrovert (being speakable)
 
 const numOfGames = document.querySelector('#clickGamesBtn');
+
+
+
 const pressForGames = document.querySelector('#decideGames')
-pressForGames.addEventListener('keydown', (e)=> {
+//when pressing the keys for a number
+pressForGames.addEventListener('keydown', enterForGames)
+
+function enterForGames(e){
+    
     console.log('keydown')
+    const displayNumber = document.querySelector('#numOfGames');
     const getNumber = pressForGames.value;
     if(e.key === "Enter"){
         if(!isNaN(getNumber)){
             console.log(getNumber)
             console.log('hello world')
+            displayNumber.innerText = getNumber; 
+            // return getNumber
+            numOfGames.disabled = true;
+            beginGame(getNumber)
         }else{
             console.log('not a number')
         }
         
     } 
-    // if(pressForGames.keydown === '')
-})
-numOfGames.addEventListener('click', (event)=> {
+}
+numOfGames.addEventListener('click', clickForGames)
+
+function clickForGames(event){
+    
     const chooseNum = document.querySelector('#decideGames');
     const getValue = chooseNum.value;
 
     const displayNumber = document.querySelector('#numOfGames');
     displayNumber.innerText = getValue; 
     console.log(event)
-    // if(event.isTrusted === true && getValue !== ''){
-    //     console.log('testing')
-    //     numOfGames.disabled = true;
-    // } else{
-    //     //best to create
-    //     console.log('other testing')
-    // }
+    // beginGame(getValue)
+    if(event.isTrusted === true && getValue !== ''){
+        console.log('testing')
+        numOfGames.disabled = true;
+        beginGame(getValue)
+    } else{
+        //best to create
+        console.log('other testing')
+    }
 
 
 
@@ -41,8 +57,11 @@ numOfGames.addEventListener('click', (event)=> {
     // }
     console.log(getValue); 
 
+    return getValue; 
+
     //studying human psychology and the dynamatic 
-})
+    
+}
 
 // numOfGames.addEventListener('pressdown')
 
@@ -50,10 +69,10 @@ numOfGames.addEventListener('click', (event)=> {
 
 // }
 
-numOfGames
 
 const cpuChooses = () => {
     const cpuChoice = Math.floor(Math.random() * 99);
+    let shareCpuChoice; 
     let cpuChoiceImg = document.querySelector('#appendCpuImg');
     cpuChoiceImg.style.width = '70%'
     console.log(cpuChoice);
@@ -63,21 +82,23 @@ const cpuChooses = () => {
         console.log('rock');
 
         cpuChoiceImg.src = "./images/rock-2.jpg";
+        shareCpuChoice = 'rock'
 
     } else if(cpuChoice <= 66){
         console.log('paper');
-
+        cpuChoiceImg.style.width = '40%'
         cpuChoiceImg.src = "./images/paper.jpg";
+        shareCpuChoice = 'paper'
     }else if(cpuChoice <= 99){
         console.log('scissors');
-
         cpuChoiceImg.src = "./images/scissors.jpg";
+        shareCpuChoice = 'scissors'
     } else{
         console.log('error'); 
     }
 
     return { 
-        option: cpuChoice,
+        option: shareCpuChoice,
         optionImg : cpuChoiceImg
     }
     // const cpuChoice = document.querySelector('#clickRock');
@@ -93,25 +114,66 @@ paper.addEventListener('click', clickPaper);
 scissors.addEventListener('click', clickScissors)
 
 function clickRock(){
-    console.log('rock');
+    let chooseRock = 'rock';
     const rockImg = document.querySelector('#appendImg');
     rockImg.src = "./images/rock-2.jpg";
     rockImg.style.width = '70%';
+    cpuVsPlayer(chooseRock);
+    
 }
 
 function clickPaper(){
-    console.log('paper');
+    let choosePaper = 'paper'
     const paperImg = document.querySelector('#appendImg');
     paperImg.src = "./images/paper.jpg";
     paperImg.style.width = '40%';
+    cpuVsPlayer(choosePaper);
 }
 
 
 function clickScissors(){
-    console.log('scissors');
+    let chooseScissors= 'scissors';
     const scissorsImg = document.querySelector('#appendImg');
     scissorsImg.src = "./images/scissors.jpg"; 
     scissorsImg.style.width = '70%';
+    cpuVsPlayer(chooseScissors)
+}
+
+function beginGame(numofGames){
+    const clickForGame = numofGames;
+    const pressForGame = numofGames;
+    return{
+        click: clickForGame,
+        press: pressForGame
+    }
+
+    // console.log('TESTING: ' + clickForGame)
+    // console.log('TESTING2: ' + pressForGame)
+}
+
+function cpuVsPlayer(playerChoice){
+    let cpuScore = 0;
+    let cpuDisplayScore = document.querySelector('#cpuNumbers');
+    let playerScore = 0;
+    let playerDisplayScore = document.querySelector('#playerNumbers')
+    
+
+    let cpuOption = cpuChooses();
+
+    if(playerChoice === 'rock' && cpuOption.option === 'scissors'
+    || playerChoice === 'scissors' && cpuOption.option === 'paper'
+    || playerChoice === 'paper' && cpuOption.option === 'rock'){
+        playerScore++;
+        playerDisplayScore.innerText = parseInt(playerChoice)
+        }else if(cpuOption.option === 'rock' && playerChoice === 'scissors'
+        || cpuOption.option === 'scissors' && playerChoice === 'paper'
+        || cpuOption.option === 'paper' && playerChoice === 'rock'){
+            cpuScore++
+            cpuDisplayScore.innerText = parseInt(cpuScore)
+        }
+
+
+
 }
 
 /*
