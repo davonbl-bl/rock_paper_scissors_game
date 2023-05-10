@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  border: 2px solid black;
+  margin: auto 35%;
+}
+
+.main__decide-games {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+.main__first-to-number {
+  text-align: center;
+}
+.main__numOfGames {
+  font-weight: bold;
+}
+
+.competitors {
+  display: flex;
+}
+
+.competitors-player {
+  width: 40%;
+}
+.competitors-player__title {
+  text-align: center;
+}
+.competitors-player__appendImg {
+  border: 2px solid black;
+  height: 200px;
+  width: 80%;
+  margin: auto;
+  background-color: #8989ee;
+}
+.competitors-player__threeBtn {
+  display: flex;
+  /* flex-wrap: nowrap; */
+  text-align: center;
+  padding-top: 20px;
+}
+.competitors-player__visuals {
+  border: 1px solid red;
+}
+.competitors-player__center {
+  padding-top: 22px;
+}
+.competitors-player__clickBtn-img {
+  width: 55%;
+}
+
+.decide-container {
+  width: 15%;
+  margin: auto;
+  padding-bottom: 65px;
+}
+.decide-container__shape {
+  display: flex;
+  border: 2px solid rgb(34, 123, 151);
+  height: 150px;
+  justify-content: space-around;
+  align-items: center;
+}
+.decide-container__winner {
+  text-align: center;
+}
+
+.competitors-cpu {
+  width: 40%;
+}
+.competitors-cpu__title {
+  text-align: center;
+}
+.competitors-cpu__appendCpuImg {
+  border: 2px solid black;
+  height: 200px;
+  width: 80%;
+  margin: auto;
+  background-color: #b3ee89;
+}/*# sourceMappingURL=styles.css.map */

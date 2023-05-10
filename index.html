@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="stylesheet" href="styles.css"></style>
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+
+<main class = 'main'>
+    <h1 class = 'topic'>Rock, Paper, Scissors </h1>
+    <div class="main__decide-games">
+        <p>Choose the number of Games: </p>
+        <input text="number" id="decideGames">
+        <button id="clickGamesBtn">Submit</button>
+    </div>
+
+    <div class ='main__number-of-games'>
+        <p class ='main__first-to-number'>
+            First to <span class="main__numOfGames" id="numOfGames">_</span> wins the Game!
+        </p>
+    </div>
+
+    <div class="competitors">
+        <section class ='competitors-player'>
+            <div class = 'competitors-player__keep-track'>
+                <h2 class ='competitors-player__title'>Player One: </h2>
+                <span id ='competitors-player__numbers'></span>
+            </div>
+            <div class= 'competitors-player__appendImg'>
+                <div class='competitors-player__image'>
+                    <img id="appendImg" src="">
+                </div>
+            </div>
+            <div class ='competitors-player__threeBtn clickBtn'>
+                <div class="competitors-player__visuals competitors-player__center" id = 'clickRock'>
+                    <img id="appendRock" class = 'competitors-player__clickBtn-img' src="./images/rock-2.jpg">
+                </div>
+                <div class="competitors-player__visuals" id = 'clickPaper'>
+                    <img id="appendPaper" class = 'competitors-player__clickBtn-img' src="./images/paper.jpg">
+                </div>
+                <div class="competitors-player__visuals competitors-player__center" id= 'clickScissors'>
+                    <img id="appendScissors" class = 'competitors-player__clickBtn-img' src="./images/scissors.jpg">
+                </div>
+            </div>
+
+        </section>
+
+        <section class = 'decide-container'>
+            <div class ='decide-container__shape'>
+                <h2 id="getWinner" class = 'decide-container__winner'>
+                    Who will win?
+                </h2>
+            </div>
+        </section>
+
+
+
+        <section class ='competitors-cpu'>
+            <div class = 'competitors-cpu__keep-track'>
+                <h2 class= 'competitors-cpu__title'>CPU: </h2>
+                <span id = 'competitors-cpu__numbers'></span>
+            </div>
+
+            <div class= 'competitors-cpu__appendCpuImg'>
+                <div class='competitors-cpu__image'>
+                    <img id="appendCpuImg" src="">
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+    <!-- starfish,catfish, pancake sex // how do you keep
+    the lust going  -->
+</body>
+</html>
