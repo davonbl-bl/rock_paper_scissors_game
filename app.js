@@ -1,7 +1,7 @@
 //emotionally stable, aggreeable, extrovert (being speakable)
 
 const numOfGames = document.querySelector('#clickGamesBtn');
-
+const displayNumber = document.querySelector('#numOfGames');
 
 
 const pressForGames = document.querySelector('#decideGames')
@@ -11,7 +11,7 @@ pressForGames.addEventListener('keydown', enterForGames)
 function enterForGames(e){
     
     console.log('keydown')
-    const displayNumber = document.querySelector('#numOfGames');
+    // const displayNumber = document.querySelector('#numOfGames');
     const getNumber = pressForGames.value;
     if(e.key === "Enter"){
         if(!isNaN(getNumber)){
@@ -29,23 +29,34 @@ function enterForGames(e){
 }
 numOfGames.addEventListener('click', clickForGames)
 
-function clickForGames(event){
+function clickForGames(){
     
     const chooseNum = document.querySelector('#decideGames');
     const getValue = chooseNum.value;
 
-    const displayNumber = document.querySelector('#numOfGames');
     displayNumber.innerText = getValue; 
-    console.log(event)
+    // console.log(event)
     // beginGame(getValue)
-    if(event.isTrusted === true && getValue !== ''){
-        console.log('testing')
+
+    if(!isNaN(getValue) && getValue > 0){
         numOfGames.disabled = true;
-        beginGame(getValue)
-    } else{
-        //best to create
-        console.log('other testing')
+        console.log(getValue)
+        return getValue; 
     }
+
+    console.log('getting a very interesting error')
+    numOfGames.disabled = false;
+    console.log(parseInt(getValue))
+    // return getValue; 
+
+    // if(event.isTrusted === true && getValue !== ''){
+    //     console.log('testing')
+    //     numOfGames.disabled = true;
+    //     // beginGame(getValue)
+    //     return getValue; 
+    //     //best to create
+    //     console.log('other testing')
+    // }
 
 
 
@@ -55,9 +66,9 @@ function clickForGames(event){
     // } else {
     //     console.log('it is not working')
     // }
-    console.log(getValue); 
+    // console.log(getValue); 
 
-    return getValue; 
+    // return getValue; 
 
     //studying human psychology and the dynamatic 
     
@@ -79,18 +90,18 @@ const cpuChooses = () => {
     // console.log('hello world')
 
     if(cpuChoice <= 33){
-        console.log('rock');
+        // console.log('rock');
 
         cpuChoiceImg.src = "./images/rock-2.jpg";
         shareCpuChoice = 'rock'
 
     } else if(cpuChoice <= 66){
-        console.log('paper');
+        // console.log('paper');
         cpuChoiceImg.style.width = '40%'
         cpuChoiceImg.src = "./images/paper.jpg";
         shareCpuChoice = 'paper'
     }else if(cpuChoice <= 99){
-        console.log('scissors');
+        // console.log('scissors');
         cpuChoiceImg.src = "./images/scissors.jpg";
         shareCpuChoice = 'scissors'
     } else{
@@ -151,11 +162,18 @@ function beginGame(numofGames){
     // console.log('TESTING2: ' + pressForGame)
 }
 
+let cpuScore = 0; 
+let playerScore = 0; 
+
+let cpuDisplayScore = document.querySelector('#cpuNumbers');
+let playerDisplayScore = document.querySelector('#playerNumbers');
+let getCurrentWinner = document.querySelector('#getWinner')
+
 function cpuVsPlayer(playerChoice){
-    let cpuScore = 0;
-    let cpuDisplayScore = document.querySelector('#cpuNumbers');
-    let playerScore = 0;
-    let playerDisplayScore = document.querySelector('#playerNumbers')
+
+    // let cpuDisplayScore = document.querySelector('#cpuNumbers');
+    // let playerDisplayScore = document.querySelector('#playerNumbers');
+    
     
 
     let cpuOption = cpuChooses();
@@ -163,18 +181,114 @@ function cpuVsPlayer(playerChoice){
     if(playerChoice === 'rock' && cpuOption.option === 'scissors'
     || playerChoice === 'scissors' && cpuOption.option === 'paper'
     || playerChoice === 'paper' && cpuOption.option === 'rock'){
-        playerScore++;
-        playerDisplayScore.innerText = parseInt(playerChoice)
+        // debugger; 
+        playerScore = playerScore + 1;
+        console.log('player score: ' + playerScore)
+        // playerDisplayScore.innerText = parseInt(playerChoice)
+        playerDisplayScore.innerText = playerScore
+        getCurrentWinner.innerText = 'Player One Wins';
+
+        soHumanPlayer(playerScore)
+        return playerChoice
+        // getWinner(playerScore)
+
+        // return playerScore
         }else if(cpuOption.option === 'rock' && playerChoice === 'scissors'
         || cpuOption.option === 'scissors' && playerChoice === 'paper'
         || cpuOption.option === 'paper' && playerChoice === 'rock'){
             cpuScore++
-            cpuDisplayScore.innerText = parseInt(cpuScore)
+            cpuDisplayScore.innerText = cpuScore
+            getCurrentWinner.innerText = 'CPU Wins';
+            soCpuPlayer(cpuScore)
+            // getWinner(cpuScore)
+            // getWinner()
+            // return cpuScore
+            return cpuScore
+        }else{
+            console.log('tie')
+            getCurrentWinner.innerText = "It's a tie";
+            // getWinner()
         }
 
-
+        // return{
+        //     humanPlayer: praseInt(playerScore),
+        //     cpuPlayer: parseInt(cpuScore)
+        // }
 
 }
+
+function soHumanPlayer(getWinner){
+    const reachThisScore = parseInt(clickForGames());
+    // const clickForScore = reachThisScore.click
+    // const pressForScore = reachThisScore.press
+
+    console.log(typeof clickForGames())
+    console.log(reachThisScore)
+
+    // const getTheWinner = cpuVsPlayer(); 
+    let officalPlayerScore = getWinner; 
+
+    if(officalPlayerScore === reachThisScore){
+        alert('PLAYER WINS THE GAME');
+        numOfGames.disabled = false;
+        cpuScore = 0; 
+        playerScore = 0; 
+        cpuDisplayScore.innerText = '';
+        playerDisplayScore.innerText = '';
+        getCurrentWinner.innerText = 'Who will win?'
+    }else{
+        console.log('continue the game')
+    }
+}
+
+function soCpuPlayer(getWinner){
+    const reachThisScore = parseInt(clickForGames());
+    // const clickForScore = reachThisScore.click;
+    // const pressForScore = reachThisScore.press;
+
+    // const getTheWinner = getWinner;  
+    let officalCpuScore = getWinner; 
+
+    // console.log(typeof beginGame())
+    // console.log('what is it:::' + beginGame())
+    console.log(reachThisScore)
+
+    if(officalCpuScore === reachThisScore){
+        alert('CPU WINS THE GAME');
+        numOfGames.disabled = false;
+        cpuScore = 0; 
+        playerScore = 0; 
+        cpuDisplayScore.innerText = '';
+        playerDisplayScore.innerText = '';
+        getCurrentWinner.innerText = 'Who will win?'
+
+    }else{
+        console.log('continue the game')
+    }
+}
+
+// function getWinner(){
+//     const reachThisScore = beginGame();
+//     const clickForScore = reachThisScore.click
+//     console.log(clickForScore)
+//     const pressForScore = reachThisScore.press
+
+//     const getTheWinner = cpuVsPlayer(); 
+//     let officalPlayerScore = getTheWinner.humanPlayer;
+//     let officalCpuScore = getTheWinner.cpuPlayer;
+
+//     if(officalCpuScore === clickForScore){
+//         alert('CPU WINS THE GAME');
+//     } 
+//     // else if(officalPlayerScore === clickForScore || officalPlayerScore === pressForScore){
+//     //     alert('PLAYER WINS THE GAME')
+//     // } 
+    
+//     else{
+//         console.log('the game is still going')
+//     }
+
+// }
 
 /*
 
