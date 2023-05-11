@@ -1,29 +1,27 @@
-//emotionally stable, aggreeable, extrovert (being speakable)
-
 const numOfGames = document.querySelector('#clickGamesBtn');
 const displayNumber = document.querySelector('#numOfGames');
 
 
-const pressForGames = document.querySelector('#decideGames')
+const pressForGames = document.querySelector('#decideGames');
 //when pressing the keys for a number
-pressForGames.addEventListener('keydown', enterForGames)
+pressForGames.addEventListener('keydown', enterForGames);
 
 function enterForGames(){
     
-    console.log('keydown')
+    // console.log('keydown')
     // const displayNumber = document.querySelector('#numOfGames');
     const getNumber = pressForGames.value;
 
     if(!isNaN(getNumber) && getNumber > 0){
         numOfGames.disabled = true;
-        console.log(getNumber)
+        // console.log(getNumber)
         displayNumber.innerText = getNumber; 
         return getNumber; 
     }
 
-    console.log('getting a very interesting error')
-    numOfGames.disabled = false;
-    console.log(parseInt(getNumber))
+    console.log('getting a very interesting error');
+    // numOfGames.disabled = false;
+    // console.log(parseInt(getNumber))
 
 
     // if(e.key === "Enter"){
@@ -40,7 +38,7 @@ function enterForGames(){
         
     // } 
 }
-numOfGames.addEventListener('click', clickForGames)
+numOfGames.addEventListener('click', clickForGames);
 
 function clickForGames(){
     
@@ -51,13 +49,13 @@ function clickForGames(){
 
     if(!isNaN(getValue) && getValue > 0){
         numOfGames.disabled = true;
-        console.log(getValue)
+        // console.log(getValue)
         return getValue; 
     }
 
     console.log('getting a very interesting error')
-    numOfGames.disabled = false;
-    console.log(parseInt(getValue))
+    // numOfGames.disabled = false;
+    // console.log(parseInt(getValue))
 
     
 }
@@ -66,20 +64,20 @@ const cpuChooses = () => {
     const cpuChoice = Math.floor(Math.random() * 99);
     let shareCpuChoice; 
     let cpuChoiceImg = document.querySelector('#appendCpuImg');
-    cpuChoiceImg.style.width = '70%'
-    console.log(cpuChoice);
+    cpuChoiceImg.style.width = '70%';
+    // console.log(cpuChoice);
 
     if(cpuChoice <= 33){
         cpuChoiceImg.src = "./images/rock-2.jpg";
-        shareCpuChoice = 'rock'
+        shareCpuChoice = 'rock';
 
     } else if(cpuChoice <= 66){
-        cpuChoiceImg.style.width = '40%'
+        cpuChoiceImg.style.width = '40%';
         cpuChoiceImg.src = "./images/paper.jpg";
-        shareCpuChoice = 'paper'
+        shareCpuChoice = 'paper';
     }else if(cpuChoice <= 99){
         cpuChoiceImg.src = "./images/scissors.jpg";
-        shareCpuChoice = 'scissors'
+        shareCpuChoice = 'scissors';
     } else{
         console.log('error'); 
     }
@@ -97,7 +95,7 @@ const scissors = document.querySelector('#clickScissors');
 
 rock.addEventListener('click', clickRock);
 paper.addEventListener('click', clickPaper);
-scissors.addEventListener('click', clickScissors)
+scissors.addEventListener('click', clickScissors);
 
 function clickRock(){
     let chooseRock = 'rock';
@@ -122,7 +120,7 @@ function clickScissors(){
     const scissorsImg = document.querySelector('#appendImg');
     scissorsImg.src = "./images/scissors.jpg"; 
     scissorsImg.style.width = '70%';
-    cpuVsPlayer(chooseScissors)
+    cpuVsPlayer(chooseScissors);
 }
 
 function beginGame(numofGames){
@@ -139,7 +137,7 @@ let playerScore = 0;
 
 let cpuDisplayScore = document.querySelector('#cpuNumbers');
 let playerDisplayScore = document.querySelector('#playerNumbers');
-let getCurrentWinner = document.querySelector('#getWinner')
+let getCurrentWinner = document.querySelector('#getWinner');
 
 function cpuVsPlayer(playerChoice){
 
@@ -150,21 +148,20 @@ function cpuVsPlayer(playerChoice){
     || playerChoice === 'scissors' && cpuOption.option === 'paper'
     || playerChoice === 'paper' && cpuOption.option === 'rock'){
         playerScore = playerScore + 1;
-        console.log('player score: ' + playerScore)
-        playerDisplayScore.innerText = playerScore
+        // console.log('player score: ' + playerScore)
+        playerDisplayScore.innerText = playerScore;
         getCurrentWinner.innerText = 'Player One Wins';
 
-        soHumanPlayer(playerScore)
+        soHumanPlayer(playerScore);
         return playerChoice
 
         }else if(cpuOption.option === 'rock' && playerChoice === 'scissors'
         || cpuOption.option === 'scissors' && playerChoice === 'paper'
         || cpuOption.option === 'paper' && playerChoice === 'rock'){
-            cpuScore++
-            cpuDisplayScore.innerText = cpuScore
+            cpuScore++;
+            cpuDisplayScore.innerText = cpuScore;
             getCurrentWinner.innerText = 'CPU Wins';
-            soCpuPlayer(cpuScore)
-
+            soCpuPlayer(cpuScore);
             return cpuScore
         }else{
             console.log('tie')
@@ -178,8 +175,8 @@ function soHumanPlayer(getWinner){
     const reachThisScore = parseInt(clickForGames());
     const reachThisScore2 = parseInt(enterForGames());
 
-    console.log(typeof clickForGames())
-    console.log(reachThisScore)
+    // console.log(typeof clickForGames())
+    // console.log(reachThisScore)
 
     const chooseNum = document.querySelector('#decideGames');
     let getValue = chooseNum.value;
@@ -187,7 +184,7 @@ function soHumanPlayer(getWinner){
     // console.log('num of Games --->' + getValue)
 
     let officalPlayerScore = getWinner; 
-    let clearImg = document.querySelector('#appendImg')
+    let clearImg = document.querySelector('#appendImg');
     let cpuChoiceImg = document.querySelector('#appendCpuImg');
 
     if(officalPlayerScore === reachThisScore 
@@ -198,14 +195,15 @@ function soHumanPlayer(getWinner){
         playerScore = 0; 
         cpuDisplayScore.innerText = '';
         playerDisplayScore.innerText = '';
-        getCurrentWinner.innerText = 'Who will win?'
+        getCurrentWinner.innerText = 'Who will win?';
         displayNumber.innerText ='_';
 
         chooseNum.value = ''; 
-        clearImg.src = ''
-        cpuChoiceImg.src =''
+        // getValue = ''
+        clearImg.src = '';
+        cpuChoiceImg.src ='';
     }else{
-        console.log('continue the game')
+        console.log('continue the game');
     }
 }
 
@@ -215,14 +213,14 @@ function soCpuPlayer(getWinner){
 
     let officalCpuScore = getWinner; 
 
-    console.log(reachThisScore)
+    // console.log(reachThisScore)
 
     const chooseNum = document.querySelector('#decideGames');
-    let getValue = chooseNum.value;
+    // let getValue = chooseNum.value;
 
 
     let cpuChoiceImg = document.querySelector('#appendCpuImg');
-    let clearImg = document.querySelector('#appendImg')
+    let clearImg = document.querySelector('#appendImg');
 
     if(officalCpuScore === reachThisScore
         || officalCpuScore === reachThisScore2){
@@ -232,13 +230,14 @@ function soCpuPlayer(getWinner){
         playerScore = 0; 
         cpuDisplayScore.innerText = '';
         playerDisplayScore.innerText = '';
-        getCurrentWinner.innerText = 'Who will win?'
+        getCurrentWinner.innerText = 'Who will win?';
         displayNumber.innerText ='_';
         
-
         chooseNum.value = ''; 
+
+        // getValue = ''
         cpuChoiceImg.src = '';
-        clearImg.src =''
+        clearImg.src ='';
 
     }else{
         console.log('continue the game')
@@ -248,7 +247,12 @@ function soCpuPlayer(getWinner){
 
 /*
 
+a variable that is meant to store the input value won't be able to erase the value to an empty string
+in comparison to reference the input value itself and reassigning it's value:
 
+chooseNum.value = '' //this works in comparison to ---
+--> let getValue = choose.value;
+    getValue = ''
 
 comparing the conditional statements
 --clicking the amount of games
