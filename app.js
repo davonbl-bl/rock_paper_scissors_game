@@ -8,24 +8,36 @@ const pressForGames = document.querySelector('#decideGames')
 //when pressing the keys for a number
 pressForGames.addEventListener('keydown', enterForGames)
 
-function enterForGames(e){
+function enterForGames(){
     
     console.log('keydown')
     // const displayNumber = document.querySelector('#numOfGames');
     const getNumber = pressForGames.value;
-    if(e.key === "Enter"){
-        if(!isNaN(getNumber)){
-            console.log(getNumber)
-            console.log('hello world')
-            displayNumber.innerText = getNumber; 
-            // return getNumber
-            numOfGames.disabled = true;
-            beginGame(getNumber)
-        }else{
-            console.log('not a number')
-        }
+
+    if(!isNaN(getNumber) && getNumber > 0){
+        numOfGames.disabled = true;
+        console.log(getNumber)
+        return getNumber; 
+    }
+
+    console.log('getting a very interesting error')
+    numOfGames.disabled = false;
+    console.log(parseInt(getNumber))
+
+
+    // if(e.key === "Enter"){
+    //     if(!isNaN(getNumber)){
+    //         console.log(getNumber)
+    //         console.log('hello world')
+    //         displayNumber.innerText = getNumber; 
+    //         // return getNumber
+    //         numOfGames.disabled = true;
+    //         beginGame(getNumber)
+    //     }else{
+    //         console.log('not a number')
+    //     }
         
-    } 
+    // } 
 }
 numOfGames.addEventListener('click', clickForGames)
 
@@ -219,16 +231,27 @@ function cpuVsPlayer(playerChoice){
 
 function soHumanPlayer(getWinner){
     const reachThisScore = parseInt(clickForGames());
+    const reachThisScore2 = parseInt(enterForGames());
+
+    // const resetGame = pressForGames.value; 
     // const clickForScore = reachThisScore.click
     // const pressForScore = reachThisScore.press
 
     console.log(typeof clickForGames())
     console.log(reachThisScore)
 
+    const chooseNum = document.querySelector('#decideGames');
+    let getValue = chooseNum.value;
+
+    // console.log('num of Games --->' + getValue)
+
     // const getTheWinner = cpuVsPlayer(); 
     let officalPlayerScore = getWinner; 
+    let clearImg = document.querySelector('#appendImg')
+    let cpuChoiceImg = document.querySelector('#appendCpuImg');
 
-    if(officalPlayerScore === reachThisScore){
+    if(officalPlayerScore === reachThisScore 
+        || officalPlayerScore === reachThisScore2){
         alert('PLAYER WINS THE GAME');
         numOfGames.disabled = false;
         cpuScore = 0; 
@@ -236,6 +259,11 @@ function soHumanPlayer(getWinner){
         cpuDisplayScore.innerText = '';
         playerDisplayScore.innerText = '';
         getCurrentWinner.innerText = 'Who will win?'
+        displayNumber.innerText ='_';
+
+        chooseNum.value = ''; 
+        clearImg.src = ''
+        cpuChoiceImg.src =''
     }else{
         console.log('continue the game')
     }
@@ -243,8 +271,11 @@ function soHumanPlayer(getWinner){
 
 function soCpuPlayer(getWinner){
     const reachThisScore = parseInt(clickForGames());
+    const reachThisScore2 = parseInt(enterForGames()); 
     // const clickForScore = reachThisScore.click;
     // const pressForScore = reachThisScore.press;
+    // const resetGame = pressForGames.value; 
+    // console.log('TRACKING GAME: ' + resetGame)
 
     // const getTheWinner = getWinner;  
     let officalCpuScore = getWinner; 
@@ -253,7 +284,16 @@ function soCpuPlayer(getWinner){
     // console.log('what is it:::' + beginGame())
     console.log(reachThisScore)
 
-    if(officalCpuScore === reachThisScore){
+    const chooseNum = document.querySelector('#decideGames');
+    let getValue = chooseNum.value;
+
+    // console.log('num of Games --->' + getValue)
+
+    let cpuChoiceImg = document.querySelector('#appendCpuImg');
+    let clearImg = document.querySelector('#appendImg')
+
+    if(officalCpuScore === reachThisScore
+        || officalCpuScore === reachThisScore2){
         alert('CPU WINS THE GAME');
         numOfGames.disabled = false;
         cpuScore = 0; 
@@ -261,6 +301,12 @@ function soCpuPlayer(getWinner){
         cpuDisplayScore.innerText = '';
         playerDisplayScore.innerText = '';
         getCurrentWinner.innerText = 'Who will win?'
+        displayNumber.innerText ='_';
+        
+
+        chooseNum.value = ''; 
+        cpuChoiceImg.src = '';
+        clearImg.src =''
 
     }else{
         console.log('continue the game')
