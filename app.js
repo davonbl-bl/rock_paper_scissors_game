@@ -16,6 +16,7 @@ function enterForGames(){
         numOfGames.disabled = true;
         // console.log(getNumber)
         displayNumber.innerText = getNumber; 
+        pressForGames.disabled = true; 
         return getNumber; 
     }
 
@@ -189,8 +190,10 @@ function soHumanPlayer(getWinner){
 
     if(officalPlayerScore === reachThisScore 
         || officalPlayerScore === reachThisScore2){
-        alert('PLAYER WINS THE GAME');
+        alert('PLAYER ONE WINS THE GAME');
         numOfGames.disabled = false;
+        pressForGames.disabled = false; 
+
         cpuScore = 0; 
         playerScore = 0; 
         cpuDisplayScore.innerText = '';
@@ -226,6 +229,8 @@ function soCpuPlayer(getWinner){
         || officalCpuScore === reachThisScore2){
         alert('CPU WINS THE GAME');
         numOfGames.disabled = false;
+        pressForGames.disabled = false; 
+
         cpuScore = 0; 
         playerScore = 0; 
         cpuDisplayScore.innerText = '';
